@@ -1,4 +1,4 @@
-function [EffYoung] = CalcEYM(filename,width,thickness,zero_length)
+function [sigma, epsi, EffYoung] = CalcEYM(filename,width,thickness,zero_length)
 %CalcEYM calculates the Effective Young's Modulus and plots this per time
 %   Filename is a table of 3 colums with the length and force at different 
 %   time instances, the other 3 parameters descibe the dimentions of the sample.
@@ -29,10 +29,12 @@ Time = Data(:,3); % Array with the time instances
 
 % Calculate the stress in Pa
 stress = Force ./ surface; % Divide force by surface area
+sigma - stress
 
 % Calculate the strain 
 delta_dist = Dist - orig_dist; % Calculate the change in distance
 strain = delta_dist ./ orig_dist; % Divide by the original distance
+epsi = strain
 
 %% Determine te Effective Young's Modulus
 EYM = stress ./ strain; % Divide the stress by the strain
