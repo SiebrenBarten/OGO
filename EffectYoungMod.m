@@ -11,7 +11,7 @@ surface = act_width * act_thickness; % Calculate surface area in m^2
 % Convert the original distance from mm to m
 orig_dist = sample_length_orig / 1000; % Convert from mm to m
 
-%% Import tensile test measurements
+%% Import and process tensile test measurements
 % File with 3 columns containing the lentgh, force and time
 Measurements = ; 
 
@@ -29,3 +29,6 @@ stress = Force ./ surface; % Divide force by surface area
 % Calculate the engineering strain
 delta_dist = Dist - orig_dist; % Calculate the change in distance
 strain = delta_dist ./ orig_dist; % Divide by the original distance
+
+%% Determine te Effective Young's Modulus
+EYM = stress ./ strain; % Divide the stress by the strain
