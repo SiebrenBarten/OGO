@@ -1,0 +1,40 @@
+%% secondary fiber
+% Given parameters, of the canvas page MATLAB
+V_f = 0.05;
+E_f = 10e6;
+alpha_fiber1 = 15*pi/180;
+V_matrix = 0.45;
+E_matrix = 35e3;
+E_fiber2 = 1e6;
+
+% Range of secondary fiber volume fraction and angle
+V_fiber2_range = linspace(0, 0.2, 50);
+alpha_fiber2_range = linspace(0, pi/2, 50);
+
+% Initialize matrices to store results
+E_eff_vfiber2 = zeros(size(V_fiber2_range));
+E_eff_afiber2 = zeros(size(alpha_fiber2_range));
+
+% Calculate effective Young's modulus for varying V_fiber2 and alpha_fiber2
+for i = 1:length(V_fiber2_range)
+    V_fiber2 = V_fiber2_range(i);
+    E_eff_vfiber2(i) = V_f*E_f*cos(alpha_fiber1)^2 + V_fiber2*E_fiber2*cos(alpha_fiber1)^2 + V_matrix*E_matrix;
+end
+
+for i = 1:length(alpha_fiber2_range)
+    alpha_fiber2 = alpha_fiber2_range(i);
+    E_eff_afiber2(i) = V_f*E_f*cos(alpha_fiber1)^2 + V_fiber2*E_fiber2*cos(alpha_fiber2)^2 + V_matrix*E_matrix;
+end
+
+% Plot the results
+figure;
+plot(V_fiber2_range, E_eff_vfiber2, 'LineWidth', 2);
+xlabel('V_{fiber2}');
+ylabel('Effective Young''s Modulus');
+title('Effect of Secondary Fiber Volume Fraction');
+figure;
+plot(alpha_fiber2_range*180/pi, E_eff_afiber2, 'LineWidth', 2);
+xlabel('\alpha_{fiber2} (deg)');
+ylabel('Effective Young''s Modulus');
+title('Effect of Secondary Fiber Angle');
+
