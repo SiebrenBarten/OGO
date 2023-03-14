@@ -1,0 +1,26 @@
+% Step 1: Biochemical assay to determine collagen volume fraction in healthy pleural tissue
+
+% Load the data file containing the measurements of the tissue sample
+    %The data file 'tissue_sample_data.mat' contains the variables 'sample_volume' 
+    %(in mm^3) and 'sample_mass' (in g) which have been previously measured 
+    %for the tissue sample.
+data = load('tissue_sample_data.mat');
+
+% Determine the volume of the tissue sample
+sample_volume = data.sample_volume; % in mm^3
+
+% Weigh the tissue sample to determine its mass
+sample_mass = data.sample_mass; % in g
+
+% Perform the biochemical assay to determine the collagen content of the tissue
+collagen_content = 0.5; % Replace with results from biochemical assay!!!!
+
+% Calculate the collagen volume fraction in the tissue sample
+collagen_volume = collagen_content * sample_volume; % in mm^3
+total_volume = sample_volume; % in mm^3
+collagen_volume_fraction = collagen_volume / total_volume; % as a decimal fraction
+
+% Display the result
+fprintf('Collagen volume fraction in the tissue sample is %.2f.\n', collagen_volume_fraction);
+
+
