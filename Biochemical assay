@@ -1,26 +1,29 @@
 % Step 1: Biochemical assay to determine collagen volume fraction in healthy pleural tissue
 
-% Load the data file containing the measurements of the tissue sample
-    %The data file 'tissue_sample_data.mat' contains the variables 'sample_volume' 
-    %(in mm^3) and 'sample_mass' (in g) which have been previously measured 
-    %for the tissue sample.
+% Load the data file containing the measurements of the tissue samples
+% The data file 'tissue_sample_data.mat' contains the variables 'sample_volume'
+% (in mm^3) and 'sample_mass' (in g) which have been previously measured
+% for each tissue sample.
 data = load('tissue_sample_data.mat');
 
-% Determine the volume of the tissue sample
-sample_volume = data.sample_volume; % in mm^3
+% Determine the volume of the tissue samples
+sample_volumes = data.sample_volumes; % in mm^3
 
-% Weigh the tissue sample to determine its mass
-sample_mass = data.sample_mass; % in g
+% Weigh the tissue samples to determine their mass
+sample_masses = data.sample_masses; % in g
 
-% Perform the biochemical assay to determine the collagen content of the tissue
-collagen_content = 0.5; % Replace with results from biochemical assay!!!!
+% Perform the biochemical assay to determine the collagen content of each tissue sample
+% Here, we assume that you have a vector or array of collagen content values,
+% with one value for each tissue sample.
+collagen_contents = data.sample_collagen_contents;
 
-% Calculate the collagen volume fraction in the tissue sample
-collagen_volume = collagen_content * sample_volume; % in mm^3
-total_volume = sample_volume; % in mm^3
-collagen_volume_fraction = collagen_volume / total_volume; % as a decimal fraction
+% Calculate the collagen volume fractions for each tissue sample
+collagen_volumes = collagen_contents .* sample_volumes; % in mm^3
+total_volumes = sample_volumes; % in mm^3
+collagen_volume_fractions = collagen_volumes ./ total_volumes; % as decimal fractions
 
-% Display the result
-fprintf('Collagen volume fraction in the tissue sample is %.2f.\n', collagen_volume_fraction);
-
-
+% Display the results
+num_samples = length(sample_volumes);
+for i = 1:num_samples
+fprintf('Collagen volume fraction in tissue sample %d is %.2f.\n', i, collagen_volume_fractions(i));
+end
