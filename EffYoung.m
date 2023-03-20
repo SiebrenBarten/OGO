@@ -1,6 +1,6 @@
-% COPY THIS: [matrix_plot, PCL_plot] = EffYoung('Data silicon matrix test 2% strain.txt', 'Data single PCL fiber test 2% strain.txt')
+% COPY THIS: [youngs_modulus_matrix, youngs_modulus_PCL, matrix_plot, PCL_plot] = EffYoung('Data silicon matrix test 2% strain.txt', 'Data single PCL fiber test 2% strain.txt')
 
-function [matrix_plot, PCL_plot] = EffYoung(filename_matrix, filename_PCL)
+function [youngs_modulus_matrix, youngs_modulus_PCL, matrix_plot, PCL_plot] = EffYoung(filename_matrix, filename_PCL)
 % Reads in a text file with 9 header lines and 3 columns of floating point numbers
 % separated by tabs and spaces, extracts the numbers in each column, and returns
 % them as separate lists.
