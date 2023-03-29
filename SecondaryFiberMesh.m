@@ -40,16 +40,6 @@ title('Effective Modulus vs. Fiber Volume Fraction and Angle'); % Add a title to
 hold on; 
 surf(V_f2_mesh, theta_mesh, E_effective); 
 
-%hold on; 
-%surf(V_f2_mesh, theta_mesh, E_eff30);
-
-%hold on; 
-%surf(V_f2_mesh, theta_mesh, E_eff60);
-
-%hold on; 
-%surf(V_f2_mesh, theta_mesh, E_eff90);
-%hold off;
-
 %% Determine the intersection of the graphs 
 
 %idx = find(abs(E_eff_total - E_eff0) == 0);
